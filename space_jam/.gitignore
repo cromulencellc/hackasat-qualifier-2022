@@ -1,0 +1,4 @@
+*.pyc
+log
+solver/decoded.txt
+challenge/flag.txt

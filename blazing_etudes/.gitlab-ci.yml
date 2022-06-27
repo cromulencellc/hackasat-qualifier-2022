@@ -1,0 +1,59 @@
+variables:
+  CHALLENGE_NAME: blazing_etudes
+  BUILDER_IMAGE: $CI_REGISTRY_IMAGE:builder
+  RUNNER_IMAGE: $CI_REGISTRY_IMAGE:challenge
+  SOLVER_IMAGE: $CI_REGISTRY_IMAGE:solver
+
+stages:
+  - gather_tools
+  - compile
+  - build_images
+
+builder_image:
+  stage: gather_tools
+  tags: [has3]
+  script:
+   - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+   - docker build -t $BUILDER_IMAGE challenge
+   - docker push $BUILDER_IMAGE
+
+compile_artifacts:
+  stage: compile
+  tags: [has3]
+  dependencies: [builder_image]
+  image:
+    name: $BUILDER_IMAGE
+  script:
+    - cd challenge
+    - pwd
+    - ls -al
+    - ruby ./generate.rb
+    - mv blazing_etudes.tar.bz2 microblaze-linux.tar.bz2 hints.json ..
+  artifacts:
+    paths:
+      - blazing_etudes.tar.bz2
+      - microblaze-linux.tar.bz2
+      - hints.json
+    expire_in: 2 months
+
+build_runner:
+  stage: build_images
+  tags: 
+    - has3
+  dependencies: [compile_artifacts]
+  script:
+    - cp blazing_etudes.tar.bz2 microblaze-linux.tar.bz2 runner/
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $RUNNER_IMAGE runner
+    - docker push $RUNNER_IMAGE
+
+build_solver:
+  stage: build_images
+  tags: [has3]
+  dependencies: [compile_artifacts]
+  script:
+    - cp hints.json solver/
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $SOLVER_IMAGE solver
+    - docker push $SOLVER_IMAGE
+

@@ -1,0 +1,6 @@
+wheel
+skyfield
+numpy
+psycopg2-binary
+flask
+pyyaml

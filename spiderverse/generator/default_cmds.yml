@@ -1,0 +1,6 @@
+- write: 
+    addr: "CONFIG"
+    data: "\x66\x69\x6C\x65"
+- write: 
+    addr: "NVMEM"
+    data: '{ "print_flag":4 }'

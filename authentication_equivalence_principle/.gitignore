@@ -1,0 +1,9 @@
+*.pyc
+challenge/binary/build
+generator/build/**
+authdata.bin
+log
+equivalence.tar.gz
+.vscode/*
+authenticator
+solver/challenge_tle.txt

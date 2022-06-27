@@ -1,0 +1,5 @@
+ 72,65,67,75,65,83,65,84,51    # HACKASAT3
+-701,-726,-654,140,149,134,773,791,721  # encrypted "C" result, right answer wrong order
+-701,140,773,-726,149,791,-654,134,721  # encrypted "FORTRAN" result
+
+

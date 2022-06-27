@@ -1,0 +1,1 @@
+python3 challenge.py --command-port 12001 --ip 0.0.0.0 --sample-port 12002  

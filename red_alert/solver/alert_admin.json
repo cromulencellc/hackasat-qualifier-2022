@@ -1,0 +1,141 @@
+{
+    "template_files": {},
+    "alertmanager_config": {
+      "route": {
+        "receiver": "empty",
+        "group_by": [
+          "cycle"
+        ],        "routes": [
+          {
+            "receiver": "detector-on",
+            "object_matchers": [
+              [
+                "alertname",
+                "=",
+                "detector-on"
+              ]
+            ]
+          },
+          {
+            "receiver": "laser-on",
+            "object_matchers": [
+              [
+                "alertname",
+                "=",
+                "laser-on"
+              ]
+            ]
+          },
+          {
+            "receiver": "laser-off",
+            "object_matchers": [
+              [
+                "alertname",
+                "=",
+                "laser-off"
+              ]
+            ]
+          },
+          {
+            "receiver": "detector-off",
+            "object_matchers": [
+              [
+                "alertname",
+                "=",
+                "safe"
+              ]
+            ]
+          }
+        ],
+        "group_wait": "1s",
+        "group_interval": "10h"
+      },
+      "templates": null,
+      "receivers": [
+        {
+          "name": "play",
+          "grafana_managed_receiver_configs": [
+            {
+              "name": "play",
+              "type": "webhook",
+              "disableResolveMessage": false,
+              "settings": {
+                "url": "http://groundstation:5000/play"
+              },
+              "secureFields": {}
+            }
+          ]
+        },
+        {
+          "name": "laser-on",
+          "grafana_managed_receiver_configs": [
+            {
+              "name": "laser-on",
+              "type": "webhook",
+              "disableResolveMessage": false,
+              "settings": {
+                "url": "http://groundstation:5000/laser-on"
+              },
+              "secureFields": {}
+            }
+          ]
+        },
+        {
+          "name": "laser-off",
+          "grafana_managed_receiver_configs": [
+            {
+              "name": "laser-off",
+              "type": "webhook",
+              "disableResolveMessage": false,
+              "settings": {
+                "url": "http://groundstation:5000/laser-off"
+              },
+              "secureFields": {}
+            }
+          ]
+        },
+        {
+          "name": "empty",
+          "grafana_managed_receiver_configs": [
+            {
+              "name": "empty",
+              "type": "webhook",
+              "disableResolveMessage": false,
+              "settings": {
+                "url": "http://groundstation:5000/alert"
+              },
+              "secureFields": {}
+            }
+          ]
+        },
+        {
+          "name": "detector-off",
+          "grafana_managed_receiver_configs": [
+            {
+              "name": "detector-off",
+              "type": "webhook",
+              "disableResolveMessage": false,
+              "settings": {
+                "url": "http://groundstation:5000/detector-off"
+              },
+              "secureFields": {}
+            }
+          ]
+        },
+        {
+          "name": "detector-on",
+          "grafana_managed_receiver_configs": [
+            {
+              "name": "detector-on",
+              "type": "webhook",
+              "disableResolveMessage": false,
+              "settings": {
+                "url": "http://groundstation:5000/detector-on"
+              },
+              "secureFields": {}
+            }
+          ]
+        }
+      ]
+    }
+  }

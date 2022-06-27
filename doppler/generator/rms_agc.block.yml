@@ -1,0 +1,41 @@
+id: rms_agc
+label: RMS AGC
+category: '[Satellites]/Level Controllers'
+
+parameters:
+-   id: alpha
+    label: Alpha
+    dtype: real
+    default: 1e-2
+    hide: none
+-   id: reference
+    label: Reference
+    dtype: real
+    default: '0.5'
+    hide: none
+
+inputs:
+-   label: in
+    dtype: complex
+    vlen: 1
+
+outputs:
+-   label: out
+    dtype: complex
+    vlen: 1
+
+templates:
+    imports: 'from rms_agc import rms_agc  # grc-generated hier_block'
+    make: "rms_agc(\n    alpha=${ alpha },\n    reference=${ reference },\n)"
+    callbacks:
+    - set_alpha(${ alpha })
+    - set_reference(${ reference })
+
+documentation: 'Daniel Estevez
+
+    AGC using RMS
+
+    /home/dev/has3/challenges/doppler/generator/rms_agc.py'
+grc_source: /home/dev/has3/challenges/doppler/generator/rms_agc.grc
+
+file_format: 1

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/Python/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<component name="FlagSvr" kind="passive" namespace="Ref">
+    <import_port_type>Svc/Sched/SchedPortAi.xml</import_port_type>
+    <comment>A rate group active component with input flag ready port to enable flag in tlm</comment>
+    <commands>
+        <command kind="sync" opcode="0" mnemonic="FS_FlagEnable">
+            <comment>
+            Command to attempt flag retrieval
+            </comment>
+            <args>
+                <arg name="inputFile" type="string" size="128">
+                    <comment>
+                    Input file for flag retrieval attempt
+                    </comment>
+                </arg>
+            </args>
+        </command>
+        <command kind="sync" opcode="1" mnemonic="FS_FlagSvrNoop">
+            <comment>
+            FlagSvr NOOP Command
+            </comment>
+        </command>
+    </commands>
+    <telemetry>
+        <channel id="0" name="FS_NOOP_CNT" data_type="U32">
+            <comment>
+            FlagSvr Noop Counter
+            </comment>
+        </channel>
+        <!-- <channel id="1" name="FS_THE_FLAG_PART_0" data_type="string" size="40">
+            <comment>
+            Flag Data 0
+            </comment>
+        </channel>
+        <channel id="2" name="FS_THE_FLAG_PART_1" data_type="string" size="40">
+            <comment>
+            Flag Data 1
+            </comment>
+        </channel>
+        <channel id="3" name="FS_THE_FLAG_PART_2" data_type="string" size="40">
+            <comment>
+            Flag Data 2
+            </comment>
+        </channel>
+        <channel id="4" name="FS_THE_FLAG_PART_3" data_type="string" size="40">
+            <comment>
+            Flag Data 3
+            </comment>
+        </channel>
+        <channel id="5" name="FS_THE_FLAG_PART_4" data_type="string" size="40">
+            <comment>
+            Flag Data 4
+            </comment>
+        </channel>
+        <channel id="6" name="FS_THE_FLAG_PART_5" data_type="string" size="40">
+            <comment>
+            Flag Data 5
+            </comment>
+        </channel>
+        <channel id="7" name="FS_THE_FLAG_PART_6" data_type="string" size="40">
+            <comment>
+            Flag Data 6
+            </comment>
+        </channel> -->
+    </telemetry>
+    <events>
+        <event id="0" name="FS_LOG_EVENT" severity="ACTIVITY_HI" format_string="FlagSrvLog : %s" >
+            <args>
+                <arg name="cnt" type="string" size="128">
+                    <comment>Event data</comment>
+                </arg>
+            </args>
+            <comment>
+            Flag Srv Log Event
+            </comment>
+        </event>
+        <event id="1" name="FS_FLAG_DATA_ATTEMPT" severity="ACTIVITY_HI" format_string="FlagSrv Attempt => %s" >
+            <args>
+                <arg name="cnt" type="string" size="128">
+                    <comment>Attemp log data</comment>
+                </arg>
+            </args>
+            <comment>
+            Flag data attempt received
+            </comment>
+        </event>
+        <event id="2" name="FS_FLAG_RETRIEVED_SUCCESS" severity="ACTIVITY_HI" format_string="FlagSrv recieved successful flag code. Send Flag in TLM Now" >
+            <comment>
+            Flag retrieval successful. Downlink now
+            </comment>
+        </event>
+        <event id="3" name="FS_FLAG_DATA" severity="ACTIVITY_HI" format_string="Download your flag file => %s" >
+            <args>
+                <arg name="cnt" type="string" size="192">
+                    <comment>THE FLAG FILE</comment>
+                </arg>
+            </args>
+            <comment>
+            You win. Here is the flag.
+            </comment>
+        </event>
+     </events>
+</component>

@@ -1,0 +1,5 @@
+- write: 
+    addr: "CONFIG"
+    data: "\x00\x00\x00\x00"
+- read:
+    addr: "RESERVED_2"

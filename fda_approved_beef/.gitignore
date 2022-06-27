@@ -1,0 +1,7 @@
+**/fprime/
+**/QualsRef/build-*
+**/QualsRef/logs
+**/QualsRefOld/
+/fprime-re*
+log2
+challenge/system-local.log

@@ -1,0 +1,24 @@
+[workspace]
+members = ["client", "messages", "server", "tests"]
+
+[profile.release]
+opt-level=1 
+panic="abort"
+
+# [package]
+# name = "networking"
+# version = "0.1.0"
+# edition = "2021"
+
+# # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# [dependencies]
+
+
+# [[bin]]
+# name = "server"
+# path = "server/src/main.rs"
+
+# [[bin]]
+# name = "client"
+# path = "client/src/main.rs"

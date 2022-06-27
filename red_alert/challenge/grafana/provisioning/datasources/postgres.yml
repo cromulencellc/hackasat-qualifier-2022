@@ -1,0 +1,19 @@
+apiVersion: 1
+
+datasources:
+  - name: telemetry
+    type: postgres
+    access: proxy
+    orgId: 1
+    url: postgres:5432
+    uid: telemetry_db
+    user: player
+    database: red_alert
+    basicAuth: false
+    isDefault: true
+    jsonData:
+      sslmode: disable
+    secureJsonData:
+      password: password
+    version: 1
+    editable: false

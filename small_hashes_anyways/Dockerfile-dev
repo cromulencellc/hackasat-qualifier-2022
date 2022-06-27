@@ -1,0 +1,3 @@
+FROM registry.mlb.cromulence.com/has3/quals/microblaze-user-toolchain:bk-20220420
+RUN apk add alpine-sdk less zsh clang gdb ruby
+CMD "zsh"

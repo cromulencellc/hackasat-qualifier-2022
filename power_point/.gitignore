@@ -1,0 +1,3 @@
+*.pyc
+solver/out.txt
+log

@@ -1,0 +1,7 @@
+{
+    "frequency":2165000,
+    "constellation":"BPSK",
+    "samples_per_symbol":25,
+    "diff_encoding":"ON",
+    "amplitude":1000.0
+}

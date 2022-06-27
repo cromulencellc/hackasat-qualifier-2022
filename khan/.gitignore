@@ -1,0 +1,13 @@
+# Cache and Binaries
+__pycache__
+challenge/sim/.venv/**
+challenge/sim/basilisk/**
+*.pyc
+static/Eigen/
+static/build
+challenge/static/**
+log
+Lander
+**/launch.json
+**/settings.json
+**/tasks.json

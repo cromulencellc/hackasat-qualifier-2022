@@ -1,0 +1,54 @@
+<packets name="RefPackets" namespace="Ref" size="111">
+
+    <import_topology>Ref/Top/RefTopologyAppAi.xml</import_topology>
+
+    <packet name="CDH" id="1" level="1">
+        <channel name="cmdDisp.CommandsDispatched"/>
+        <channel name="rateGroup1Comp.RgMaxTime"/>
+        <channel name="rateGroup2Comp.RgMaxTime"/>
+        <channel name="rateGroup3Comp.RgMaxTime"/>
+        <channel name="cmdSeq.CS_LoadCommands"/>
+        <channel name="cmdSeq.CS_CancelCommands"/>
+        <channel name="cmdSeq.CS_CommandsExecuted"/>
+        <channel name="cmdSeq.CS_SequencesCompleted"/>
+        <channel name="fileUplink.FilesReceived"/>
+        <channel name="fileUplink.PacketsReceived"/>
+        <channel name="fileUplinkBufferManager.TotalBuffs"/>
+        <channel name="fileUplinkBufferManager.CurrBuffs"/>
+        <channel name="fileUplinkBufferManager.HiBuffs"/>
+        <channel name="fileDownlink.FilesSent"/>
+        <channel name="fileDownlink.PacketsSent"/>
+        <channel name="pktTlm.TPK_SendLevel"/>
+        <channel name="fileManager.CommandsExecuted"/>
+    </packet>
+
+    <packet name="CDHErrors" id="2" level="1">
+        <channel name="rateGroup1Comp.RgCycleSlips"/>
+        <channel name="rateGroup2Comp.RgCycleSlips"/>
+        <channel name="rateGroup3Comp.RgCycleSlips"/>
+        <channel name="cmdSeq.CS_Errors"/>
+        <channel name="fileUplink.Warnings"/>
+        <channel name="fileDownlink.Warnings"/>
+        <channel name="health.PingLateWarnings"/>
+        <channel name="fileManager.Errors"/>
+        <channel name="fileUplinkBufferManager.NoBuffs"/>
+        <channel name="fileUplinkBufferManager.EmptyBuffs"/>
+        <channel name="fileManager.Errors"/>
+    </packet>
+
+    <packet name="DriveTlm" id="3" level="1">
+        <channel name="pingRcvr.PR_NumPings"/>
+        <channel name="blockDrv.BD_Cycles"/>
+        <channel name="flagSvr.FS_NOOP_CNT"/>
+        <channel name="flagSvr.FS_THE_FLAG_PART_0"/>
+        <channel name="flagSvr.FS_THE_FLAG_PART_1"/>
+        <channel name="flagSvr.FS_THE_FLAG_PART_2"/>
+        <channel name="flagSvr.FS_THE_FLAG_PART_3"/>
+    </packet>
+
+    <!-- Ignored packets -->
+
+    <ignore>
+        <channel name="cmdDisp.CommandErrors"/>
+    </ignore>
+</packets>

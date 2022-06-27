@@ -1,0 +1,35 @@
+services:
+  grafana:
+    build: grafana
+    container_name: grafana
+    depends_on:
+      - "postgres"
+    ports:
+      - 3000:3000 
+    links:
+      - postgres
+      - groundstation:groundstation
+    env_file:
+      - ./grafana/challenge.config
+    volumes:
+     - ./grafana/provisioning/:/etc/grafana/provisioning/
+     - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+  postgres:
+    image: postgres:14.2
+    environment:
+      POSTGRES_USER: player
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: red_alert
+    ports:
+      - 5432:5432
+  groundstation:
+    build: simulation
+    container_name: groundstation
+    stdin_open: true
+    tty: true
+    depends_on:
+      - "postgres"
+    links:
+      - postgres
+    ports: 
+      - 5000:5000

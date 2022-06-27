@@ -1,0 +1,11 @@
+*.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/boston.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/miami.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/slc.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/chicago.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/la.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/nyc.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/oahu.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/portland.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/sf.jpg filter=lfs diff=lfs merge=lfs -text
+static/images/vegas.jpg filter=lfs diff=lfs merge=lfs -text

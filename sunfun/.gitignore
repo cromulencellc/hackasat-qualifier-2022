@@ -1,0 +1,7 @@
+log
+*.vscode
+*__pycache__*
+challenge/sat.tle
+challenge/de440s.bsp
+solver/sat.tle
+solver/de440s.bsp

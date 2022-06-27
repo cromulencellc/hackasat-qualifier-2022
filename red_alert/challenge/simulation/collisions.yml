@@ -1,0 +1,9 @@
+collisions:
+  - satellite: "SAT_1"
+    time: 6000
+  - satellite: "SAT_1"
+    time: 6800
+  - satellite: "SAT_1"
+    time: 15000
+  - satellite: "SAT_1"
+    time: 15700

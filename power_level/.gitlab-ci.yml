@@ -1,0 +1,24 @@
+variables:
+  CHALLENGE_NAME: power_level
+build_images:
+  stage: build
+  tags: 
+    - has3
+  script:
+   - docker build -t $CHALLENGE_NAME:challenge challenge
+   - docker build -t $CHALLENGE_NAME:solver solver
+   - docker tag $CHALLENGE_NAME:challenge $REGISTRY_URL/$REGISTRY_PATH/$CHALLENGE_NAME:challenge
+   - docker tag $CHALLENGE_NAME:solver $REGISTRY_URL/$REGISTRY_PATH/$CHALLENGE_NAME:solver
+
+push_images:
+  stage: deploy
+  needs: [build_images]
+  tags: 
+    - has3
+  script: 
+    - docker login $REGISTRY_URL -u $REGISTRY_USER -p $REGISTRY_KEY
+    - echo "Pusing to docker registry"
+    - docker push $REGISTRY_URL/$REGISTRY_PATH/$CHALLENGE_NAME:challenge
+    - docker push $REGISTRY_URL/$REGISTRY_PATH/$CHALLENGE_NAME:solver
+    - echo "Done you fool"
+

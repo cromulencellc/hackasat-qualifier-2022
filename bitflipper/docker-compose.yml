@@ -1,0 +1,15 @@
+services:
+  challenge:
+    image: bitflipper:challenge
+    build:
+      context: ./challenge/
+      dockerfile: ./Dockerfile
+    command: /chal/run.sh
+    stdin_open: true
+    tty: true
+  solver:
+    image: bitflipper:solver
+    build:
+      context: ./solver/
+      dockerfile: ./Dockerfile
+    command: /solve/solver.py

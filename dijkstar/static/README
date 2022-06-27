@@ -1,0 +1,3 @@
+Begin by untaring the static_files.tar.
+
+To test out your binary, simply run the user_test.sh in a terminal.

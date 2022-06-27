@@ -1,0 +1,6 @@
+# Cache and Binaries
+bin
+obj
+
+# Tests
+Makefile_working

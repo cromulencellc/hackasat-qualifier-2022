@@ -1,0 +1,7 @@
+{
+    "frequency":2100000,
+    "constellation":"QPSK",
+    "samples_per_symbol":10,
+    "diff_encoding":"ON",
+    "amplitude":0.0
+}
