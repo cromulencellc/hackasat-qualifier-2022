@@ -1,0 +1,32 @@
+build_crosslink:
+  stage: build
+  tags: 
+    - has3
+  script:
+   - docker build -t crosslinks:base .
+   - docker build -t crosslinks:challenge challenges/challenge_1/challenge
+   - docker build -t crosslinks2:challenge challenges/challenge_2/challenge
+   - docker build -t crosslinks:solver challenges/challenge_1/solver
+   - docker tag crosslinks:base $REGISTRY_URL/$REGISTRY_PATH/crosslinks:base
+   - docker tag crosslinks:challenge $REGISTRY_URL/$REGISTRY_PATH/crosslinks:challenge
+   - docker tag crosslinks2:challenge $REGISTRY_URL/$REGISTRY_PATH/crosslinks2:challenge
+   - docker tag crosslinks:solver $REGISTRY_URL/$REGISTRY_PATH/crosslinks:solver
+   - docker tag crosslinks:solver $REGISTRY_URL/$REGISTRY_PATH/crosslinks2:solver
+
+
+push_crosslink:
+  stage: deploy
+  needs: [build_crosslink]
+  tags: 
+    - has3
+  script: 
+    - docker login $REGISTRY_URL -u $REGISTRY_USER -p $REGISTRY_KEY
+    - echo "Pusing to docker registry"
+    - docker push $REGISTRY_URL/$REGISTRY_PATH/crosslinks:base
+    - docker push $REGISTRY_URL/$REGISTRY_PATH/crosslinks:challenge
+    - docker push $REGISTRY_URL/$REGISTRY_PATH/crosslinks2:challenge
+    - docker push $REGISTRY_URL/$REGISTRY_PATH/crosslinks:solver
+    - docker push $REGISTRY_URL/$REGISTRY_PATH/crosslinks2:solver
+    - echo "Done you fool"
+
+

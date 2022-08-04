@@ -1,0 +1,54 @@
+[ {
+    "id":"document",
+    "name":"{{name}}",
+    "version":"1.0",
+	"clock":{
+      "interval":"{{start_time}}/{{stop_time}}",
+      "currentTime":"{{start_time}}",
+      "multiplier":2100,
+      "range":"LOOP_STOP",
+      "step":"SYSTEM_CLOCK_MULTIPLIER"
+  }},
+{  
+   "id": "{{name}}",
+   "availability":["{{start_time}}/{{stop_time}}"],
+    "ellipsoid" : {
+         "radii" : { "cartesian" : [ 5000000, 5000000, 500000 ] },
+		 "material" : {
+             "solidColor":{ "color":{
+                 "rgba" : [0, 255, 0, 255]
+             }}
+	  }
+    },
+    "label" : {
+        "fillColor" : {
+            "rgba" : [255, 255, 0, 255]
+        },
+        "font" : "bold 25pt Segoe UI Semibold",
+        "horizontalOrigin" : "LEFT",
+        "outlineColor" : {
+            "rgba" : [0, 0, 0, 255]
+        },
+        "pixelOffset" : {
+            "cartesian2" : [10.0, 0.0]
+        },
+        "scale" : 1.0,
+        "show" : true,
+        "style" : "FILL",
+        "text" : "{{name}}",
+        "verticalOrigin" : "CENTER"
+    },
+   "path" : {
+			"color" : { "rgba" : [150, 150, 150, 255] },
+			"width" : 1.5,
+            "resolution": 10000
+
+    },			
+   "position": { 
+        "referenceFrame": "INERTIAL",   
+        "cartesian": [  
+{% for item in orbit %}
+"{{item['time']}}",{{item['X']}},{{item['Y']}},{{item['Z']}}
+{% if not loop.last %}    ,{% endif %} {% endfor %}
+		]  
+    } }]

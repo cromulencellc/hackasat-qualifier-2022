@@ -1,0 +1,8 @@
+challenge/GMAT
+challenge/log.txt
+challenge/error.txt
+*.pyc
+challenge/gmat_scripts/mission.script
+log
+challenge/viewer/dist
+challenge/viewer/node_modules
